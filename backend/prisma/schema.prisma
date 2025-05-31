@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Drone {
+  id                String    @id @default(uuid())
+  name              String
+  status            DroneStatus @default(IDLE)
+  batteryLevel      Float
+  lastKnownLocation Json      // Stores {latitude, longitude, altitude}
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  missions          Mission[] // Relation to missions
+}
+
+model Mission {
+  id          String        @id @default(uuid())
+  name        String
+  status      MissionStatus @default(PLANNED)
+  startTime   DateTime
+  drone       Drone         @relation(fields: [droneId], references: [id])
+  droneId     String
+  waypoints   Waypoint[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model Waypoint {
+  id        String           @id @default(uuid())
+  latitude  Float
+  longitude Float
+  altitude  Float
+  status    WaypointStatus  @default(PENDING)
+  mission   Mission         @relation(fields: [missionId], references: [id])
+  missionId String
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
+}
+
+
+enum DroneStatus {
+  IDLE
+  IN_MISSION
+  MAINTENANCE
+}
+
+enum MissionStatus {
+  PLANNED
+  IN_PROGRESS
+  COMPLETED
+  ABORTED
+}
+
+enum WaypointStatus {
+  PENDING
+  COMPLETED
+  SKIPPED
+}
