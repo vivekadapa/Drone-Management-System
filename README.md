@@ -1,25 +1,46 @@
-Drone Management System
+# 🚁 Drone Management System
 
+A full-stack web application designed to manage drone fleets, plan missions, and monitor drone operations in real-time. Built with modern web technologies, the system focuses on **safety**, **reliability**, and **seamless user experience**.
 
+---
 
-Overview
+## 📌 Overview
 
-The Drone Management System is a full-stack application designed to manage drone fleets, plan missions, and monitor drone operations in real-time. The system is built using modern web technologies with a focus on safety, reliability, and user experience.
+The Drone Management System empowers operators to:
 
-Technical Approach
+- Manage multiple drones and fleets
+- Plan and assign missions with interactive map-based waypoint placement
+- Monitor and track mission statuses
 
-1. Architecture Design
-Frontend: Next.js with TypeScript for type safety and better development experience
-Backend: Node.js with Express and Prisma ORM for robust database operations
-Database: PostgreSQL for reliable data storage and complex queries
-Map Integration: Leaflet.js for interactive mission planning.
+---
 
-2. Key Features Implementation
-Mission Planning 
-Ability to manage missions.
-Interactive waypoint placement on maps
-Drone assignment 
-Mission status tracking
-Fleet Management
-Ability to add, edit and delete drones.
+## ⚙️ Tech Stack
+
+| Layer     | Tech                      |
+|-----------|---------------------------|
+| Frontend  | [Next.js](https://nextjs.org/) + TypeScript |
+| Backend   | [Node.js](https://nodejs.org/) + [Express](https://expressjs.com/) + [Prisma ORM](https://www.prisma.io/) |
+| Database  | [PostgreSQL](https://www.postgresql.org/) |
+| Mapping   | [Leaflet.js](https://leafletjs.com/) for interactive mission planning |
+
+---
+
+## 🚀 Features
+
+### ✈️ Mission Planning
+- Create and manage drone missions
+- Assign drones to missions
+- Interactive waypoint placement on maps (Leaflet.js)
+- Real-time mission status tracking
+
+### 🛠 Fleet Management
+- Add, edit, and delete drones
+- View available and assigned drones
+- Track drone availability and mission readiness
+
+---
+
+## 📂 Project Structure
+- frontend
+- backend
 
